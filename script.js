@@ -9,7 +9,6 @@ let max_baris = 4;
 let arr_baris = [];
 let waktu = 2;
 
-
 function startTest() {
     // Reset variables
     time = 0;
