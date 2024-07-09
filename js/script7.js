@@ -15,11 +15,13 @@ let baris = 1;
 let max_kolom = 45;
 let max_baris = 60;
 let arr_baris = [];
-let waktu = 100;
+let waktu = 30;
 let nama;
 let divisi;
 
 $(document).ready(function () {
+  $("#container-landing").show();
+  $("#container-test").hide();
   $("#test-area").hide();
   $("#timer").hide();
   $(document).keydown(function (event) {
@@ -48,6 +50,8 @@ $(document).ready(function () {
 function startTest() {
   nama = $("#tbxNama").val();
   divisi = $("#tbxDivisi").val();
+  $("#container-landing").hide();
+  $("#container-test").show();
   if (nama != "" && divisi != "") {
     time = 0;
     score = 0;
@@ -151,7 +155,12 @@ function moveRow() {
     $("input[name=index_salah]").val(index_salah.toString());
     $("input[name=index_benar]").val(index_score.toString());
     $("input[name=total_isi]").val(total_isi.toString());
-    /*  document.getElementById("form-test").submit(); */
+    Swal.fire({
+      title: "Berhasil",
+      text: "Data Behasil Dikirim",
+      icon: "success",
+    });
+    document.getElementById("form-test").submit();
     return;
   }
 }
@@ -180,7 +189,7 @@ function displayNumbers(nums) {
         numberFragment.appendChild(numDiv);
         if ((index + 1) % max_baris != 0) {
           const answerDiv = document.createElement("div");
-          answerDiv.innerHTML = `<div class="answer a-${i}" style="margin-top:10px;"><input type="text" style="width:45px;" class="form-control text-center p-0 answer-input" id="answer-${i}-${index}" placeholder="?" onkeyup="debouncedCheckAnswer(event, ${index})" ${
+          answerDiv.innerHTML = `<div class="answer a-${i}" style="margin-top:10px;"><input type="number" style="width:45px;" class="form-control text-center p-0 answer-input" id="answer-${i}-${index}" placeholder="?" onkeyup="debouncedCheckAnswer(event, ${index})" ${
             index == 0 && i == 1 ? "" : "readonly"
           }></div>`;
           answerFragment.appendChild(answerDiv);

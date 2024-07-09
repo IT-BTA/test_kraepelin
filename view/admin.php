@@ -8,13 +8,13 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type='text/css'>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../css/styles3.css" />
 </head>
 
 <body>
-    <div class="container mt-5">
+    <div class="container mt-4">
         <div class="card text-center">
-            <div class="card-header">
+            <div class="card-header" style="background-color: #C0C0C0;">
                 <h1>Test Kraepelin</h1>
             </div>
             <div class="card-body">
@@ -77,7 +77,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="admin4.js"></script>
+    <script src="../js/admin4.js"></script>
     <script>
         $(function() {
             $('.table').DataTable({
@@ -88,7 +88,7 @@
                 "ordering": false,
                 "paging": false,
                 "ajax": {
-                    "url": "ajax_crud.php?action=table_data",
+                    "url": "../db/ajax_crud.php?action=table_data",
                     "dataType": "json",
                     "type": "POST"
                 },

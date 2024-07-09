@@ -7,7 +7,8 @@
     <title>Test Kraepelin</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="styles.css" />
+    <link href="https://unpkg.com/basscss@7.1.1/css/basscss.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles2.css" />
     <style>
         .card-body {
             display: inline-block;
@@ -17,8 +18,8 @@
 </head>
 
 <body>
-    <div class="container mt-5 text-center">
-        <h1>Test Kraepelin</h1>
+    <div class="container text-center">
+        <h1 class="mt-1 mb-1">Test Kraepelin</h1>
         <div id="hasil_index" class="d-flex justify-content-center"></div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -29,12 +30,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="admin4.js"></script>
+    <script src="../js/admin4.js"></script>
     <script>
         $(document).ready(function() {
             $.ajax({
                 type: "GET",
-                url: `ajax_index.php?id_user=<?php echo $_GET['id_user']; ?>`,
+                url: `../db/ajax_index.php?id_user=<?php echo $_GET['id_user']; ?>`,
                 success: function(response) {
                     let data_index = JSON.parse(response);
                     let soal = data_index.soal.split(",");
@@ -49,7 +50,7 @@
                     const fragment = document.createDocumentFragment();
                     for (let i = 1; i <= max_kolom; i++) {
                         const testDiv = document.createElement("div");
-                        testDiv.className = "d-flex m-1";
+                        testDiv.className = "d-flex";
                         testDiv.innerHTML = `<div id="answers-column-${i}" class="d-flex flex-column-reverse answers-column" style="padding-bottom:17px;"></div>`;
                         fragment.appendChild(testDiv);
                         const answersColumn = testDiv.querySelector(`#answers-column-${i}`);
@@ -59,11 +60,11 @@
                                 const answerDiv = document.createElement("div");
                                 if ((index + 1) % max_baris != 0) {
                                     if (index_benar.includes(index.toString())) {
-                                        answerDiv.innerHTML = `<a id="${index}" type="button" style="height:5px;width:5px;" class="btn btn-success btn-sm mb-1"></a>`;
+                                        answerDiv.innerHTML = `<div id="${index}" style="height:20px;width:20px;border-style:solid;border-width:thin;"  class="bg-lime"></div>`;
                                     } else if (index_salah.includes(index.toString())) {
-                                        answerDiv.innerHTML = `<a id="${index}" type="button" style="height:5px;width:5px;" class="btn btn-danger btn-sm mb-1"></a>`;
+                                        answerDiv.innerHTML = `<div id="${index}" style="height:20px;width:20px;border-style:solid;border-width:thin;"  class="bg-red"></div>`;
                                     } else {
-                                        answerDiv.innerHTML = `<a id="${index}" type="button" style="height:5px;width:5px;" class="btn btn-secondary btn-sm mb-1"></a>`;
+                                        answerDiv.innerHTML = `<div id="${index}" style="height:20px;width:20px;border-style:solid;border-width:thin;"  class="bg-silver"></div>`;
                                     }
                                     answerFragment.appendChild(answerDiv);
                                 }

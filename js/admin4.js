@@ -12,7 +12,7 @@ function lihat_detail(id) {
 $("#mdlDetail").on("shown.bs.modal", function () {
   $.ajax({
     type: "GET",
-    url: `ajax_detail.php?id_user=${id_user}`,
+    url: `../db/ajax_detail.php?id_user=${id_user}`,
     success: function (response) {
       let data = JSON.parse(response);
       let benar = data.benar.split(",");
@@ -69,7 +69,7 @@ function lihat_index(id) {
 $("#mdlIndex").on("shown.bs.modal", function () {
   $.ajax({
     type: "GET",
-    url: `ajax_index.php?id_user=${id_user}`,
+    url: `../db/ajax_index.php?id_user=${id_user}`,
     success: function (response) {
       let data_index = JSON.parse(response);
       let index_benar = data_index.total_benar.split(",");
